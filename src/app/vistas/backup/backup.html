@@ -1,0 +1,6 @@
+<app-encabezado-pagina titulo="Backup" subtitulo="Respaldo o historial de cada tabla de la base de datos" [buscable]="false" />
+<p>Seleccione la tabla a mostrar:</p>
+<div class="selector">
+  <select [(ngModel)]="tabla">@for (t of tablas; track t) { <option>{{ t }}</option> }</select><span>🔍</span>
+</div>
+<div class="ejemplo">Pantalla de ejemplo que el usuario no verá</div>

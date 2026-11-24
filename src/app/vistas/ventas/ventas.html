@@ -1,0 +1,12 @@
+<app-encabezado-pagina titulo="Ventas" subtitulo="Registro y administración de ventas realizadas" [(busqueda)]="q" (agregar)="nueva()" />
+<table class="data-table">
+  <thead><tr><th>No</th><th>Producto</th><th>Cantidad</th><th>Total</th><th>Fecha</th><th>Acción</th></tr></thead>
+  <tbody>
+    @for (v of filtradas(); track v.id) {
+      <tr>
+        <td>{{ v.id }}</td><td class="izq">{{ nombres(v) }}</td><td>{{ cantidad(v) }}</td><td>{{ v.total | currency }}</td><td>{{ v.fecha | date: 'dd/MM/yyyy' }}</td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.ventas, v.id)" (editar)="ver(v)" /></td>
+      </tr>
+    } @empty { <tr><td colspan="6" class="vacio">No hay ventas registradas.</td></tr> }
+  </tbody>
+</table>

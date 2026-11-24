@@ -1,0 +1,14 @@
+<app-dialogo titulo="Vista previa del ticket" ancho="460px">
+  <div class="centrado">
+    <img class="logo-ticket" src="img/logo2.png" alt="Natural, agua de calidad" />
+    <h3>Ticket de venta</h3>
+    <p>Cliente: {{ t.cliente }}<br />Fecha: {{ t.fecha | date: 'dd/MM/yyyy HH:mm' }}</p>
+    <table class="tabla-mini">
+      <thead><tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+      <tbody>@for (l of t.lineas; track l.productoId) { <tr><td>{{ l.nombre }}</td><td>{{ l.cantidad }}</td><td>{{ l.subtotal | currency }}</td></tr> }</tbody>
+    </table>
+    <p><strong>Total: {{ t.total | currency }}</strong></p>
+  </div>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="generar()">Generar ticket</button>
+</app-dialogo>

@@ -1,0 +1,8 @@
+<app-dialogo titulo="Vista previa del reporte" [subtitulo]="d.titulo" ancho="480px">
+  <table class="tabla-mini">
+    <thead><tr><th>Concepto</th><th>Valor</th></tr></thead>
+    <tbody>@for (r of d.resumen; track r[0]) { <tr><td>{{ r[0] }}</td><td>{{ r[1] }}</td></tr> }</tbody>
+  </table>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="pdf()">Generar PDF</button>
+</app-dialogo>

@@ -1,0 +1,24 @@
+<div class="grafica">
+  @if (titulo()) { <h3>{{ titulo() }}</h3> }
+  <svg [attr.viewBox]="'0 0 ' + W + ' ' + H" role="img" [attr.aria-label]="titulo()">
+    <rect [attr.x]="izq" [attr.y]="arr" [attr.width]="geom().ancho" [attr.height]="geom().alto" class="marco" />
+    @for (m of geom().marcas; track m.texto) {
+      <text [attr.x]="izq - 8" [attr.y]="m.y + 4" class="eje" text-anchor="end">{{ m.texto }}</text>
+    }
+    @if (tipo() === 'linea') {
+      @if (geom().puntos.length > 1) { <polyline [attr.points]="geom().linea" class="linea" /> }
+      @for (p of geom().puntos; track $index) {
+        <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3.5" class="punto"><title>{{ p.etq }}: {{ p.v | currency }}</title></circle>
+      }
+    } @else {
+      @for (b of geom().barras; track $index) {
+        <rect [attr.x]="b.x0" [attr.y]="b.y" [attr.width]="b.w" [attr.height]="b.h" class="barra"><title>{{ b.etq }}: {{ b.v | currency }}</title></rect>
+      }
+    }
+    @for (p of geom().puntos; track $index) {
+      <text [attr.x]="p.x" [attr.y]="H - abajo + 15" class="eje" text-anchor="middle">{{ p.etq }}</text>
+    }
+  </svg>
+  <div class="leyenda-x">{{ ejeX() }}</div>
+  <div class="leyenda"><i [class.l]="tipo() === 'linea'" [class.b]="tipo() === 'barras'"></i>{{ serie() }}</div>
+</div>

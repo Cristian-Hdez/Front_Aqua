@@ -1,0 +1,24 @@
+<app-encabezado-pagina titulo="Reportes" subtitulo="Consulta ventas, ingresos e inventario" [buscable]="false" />
+<section class="panel">
+  <div class="tipos">
+    <button [class.sel]="modo() === 'fecha'" (click)="cambiar('fecha')"><i class="verde"></i>Ventas por fecha</button>
+    <button [class.sel]="modo() === 'mensual'" (click)="cambiar('mensual')"><i class="ambar"></i>Ingresos mensuales</button>
+  </div>
+  <div class="filtros">
+    @if (modo() === 'fecha') {
+      <label>Inicio: <input type="date" [(ngModel)]="inicio" /></label>
+      <label>Fin: <input type="date" [(ngModel)]="fin" /></label>
+    } @else {
+      <label>Mes: <select [(ngModel)]="mes">@for (m of meses; track $index) { <option [ngValue]="$index + 1">{{ m }}</option> }</select></label>
+      <label>Año: <select [(ngModel)]="anio">@for (a of anios; track a) { <option [ngValue]="a">{{ a }}</option> }</select></label>
+    }
+    <button class="btn primario" (click)="generar()">Generar</button>
+  </div>
+</section>
+<table class="data-table tabla">
+  <thead><tr><th>ID Venta</th><th>Cliente</th><th>Fecha</th><th>Total</th></tr></thead>
+  <tbody>
+    @for (v of filas(); track v.id) { <tr><td>{{ v.id }}</td><td>{{ v.cliente }}</td><td>{{ v.fecha | date: 'dd/MM/yyyy' }}</td><td>{{ v.total | currency }}</td></tr> }
+    @empty { <tr><td colspan="4" class="vacio">Elige un periodo y pulsa Generar.</td></tr> }
+  </tbody>
+</table>

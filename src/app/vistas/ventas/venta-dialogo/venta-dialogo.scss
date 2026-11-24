@@ -1,0 +1,4 @@
+.agregar { display: grid; grid-template-columns: 1fr 110px auto; gap: 12px; align-items: end; margin-bottom: 16px; font-weight: 700; }
+label { display: grid; gap: 4px; }
+select, input { height: 40px; padding: 0 10px; border: 1px solid var(--borde); background: #fff; font: inherit; font-weight: 400; width: 100%; }
+.btn { min-width: 110px; }

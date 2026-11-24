@@ -1,0 +1,20 @@
+<app-dialogo [titulo]="f.id ? 'Editar encargo' : 'Nuevo encargo'" subtitulo="Registra los datos del pedido" ancho="760px">
+  <div class="fila">Contacto:
+    <select [ngModel]="f.contactoId" (ngModelChange)="elegirContacto($event)">
+      <option [ngValue]="null">Sin contacto registrado</option>
+      @for (c of store.contactos(); track c.id) { <option [ngValue]="c.id">{{ c.nombre }} {{ c.apellido }}</option> }
+    </select>
+  </div>
+  <div class="fila">Nombre: <input [(ngModel)]="f.nombre" /></div>
+  <div class="fila">Apellido: <input [(ngModel)]="f.apellido" /></div>
+  <div class="fila">Teléfono: <input [(ngModel)]="f.telefono" inputmode="tel" /></div>
+  <div class="fila">Tipo: <select [(ngModel)]="f.tipo">@for (p of store.productos(); track p.id) { <option [value]="p.nombre">{{ p.nombre }}</option> }</select></div>
+  <div class="fila">Cantidad: <input type="number" min="1" [(ngModel)]="f.cantidad" /></div>
+  <div class="fila">Fecha recepción: <input type="date" [(ngModel)]="f.fechaRecepcion" /></div>
+  <div class="fila">Fecha entrega: <input type="date" [(ngModel)]="f.fechaEntrega" /></div>
+  <div class="fila">Estado: <select [(ngModel)]="f.estado">@for (e of estados; track e) { <option>{{ e }}</option> }</select></div>
+  <div class="fila">Descripción: <textarea [(ngModel)]="f.descripcion"></textarea></div>
+  <div class="fila">Notas: <textarea [(ngModel)]="f.notas"></textarea></div>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="guardar()">💾 Guardar</button>
+</app-dialogo>

@@ -1,0 +1,36 @@
+<section class="tanque-zona">
+  <div class="info">
+    <h2>Disponibilidad de agua actual:</h2>
+    <div class="caja">
+      <div>Capacidad total disponible: &nbsp; {{ porcentaje() }}%</div>
+      <div>Litros disponibles: &nbsp; {{ store.tanque().litros }} lts</div>
+    </div>
+  </div>
+  <div class="tanque" role="img" [attr.aria-label]="'Tanque al ' + porcentaje() + '%'">
+    <div class="agua" [style.--nivel]="nivelAgua()"></div>
+    <img src="img/nivel.png" alt="" />
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card verde"><h3>Ventas del día</h3><strong>{{ ventasHoy() | currency: 'USD' : '$' : '1.1-1' }}</strong></div>
+  <div class="card azul"><h3>Productos</h3><strong>{{ store.productos().length }}</strong></div>
+  <div class="card azul"><h3>Contactos</h3><strong>{{ store.contactos().length }}</strong></div>
+  <div class="card naranja"><h3>Stock bajo</h3><strong>{{ stockBajo() }}</strong></div>
+</section>
+
+<section class="graficas">
+  <div class="panel"><app-grafica tipo="linea" titulo="Ventas por día" ejeX="Fecha" [etiquetas]="porDia().etiquetas" [valores]="porDia().valores" /></div>
+  <div class="panel"><app-grafica tipo="barras" titulo="Ventas por mes" ejeX="Mes" [etiquetas]="porMes().etiquetas" [valores]="porMes().valores" /></div>
+</section>
+
+<section class="panel mas-vendidos">
+  <h3>Productos más vendidos</h3>
+  <ul>
+    @for (p of masVendidos(); track p.nombre) {
+      <li>{{ p.nombre }} <span class="flecha">→</span> {{ p.cantidad }} vendidos</li>
+    } @empty {
+      <li class="vacio">Aún no hay ventas registradas.</li>
+    }
+  </ul>
+</section>

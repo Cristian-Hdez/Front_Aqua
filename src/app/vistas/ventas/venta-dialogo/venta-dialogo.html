@@ -1,0 +1,21 @@
+<app-dialogo titulo="Nueva venta" subtitulo="Agrega los productos y finaliza la venta" ancho="720px">
+  <div class="agregar">
+    <label>Producto:
+      <select [(ngModel)]="productoId">@for (p of disponibles(); track p.id) { <option [ngValue]="p.id">{{ p.nombre }} - {{ p.precio | currency }}</option> }</select>
+    </label>
+    <label>Cantidad: <input type="number" min="1" [(ngModel)]="cantidad" /></label>
+    <button class="btn verde" (click)="agregar()">Agregar</button>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th><th></th></tr></thead>
+    <tbody>
+      @for (l of lineas(); track l.productoId) {
+        <tr><td class="izq">{{ l.nombre }}</td><td>{{ l.cantidad }}</td><td>{{ l.subtotal | currency }}</td>
+          <td><button class="icon-btn borrar" (click)="quitar(l.productoId)" aria-label="Quitar">✖</button></td></tr>
+      } @empty { <tr><td colspan="4" class="vacio">Agrega productos a la venta.</td></tr> }
+    </tbody>
+  </table>
+  <strong pie class="total">Total: {{ total() | currency }}</strong>
+  <button pie class="btn" (click)="ticket()" [disabled]="!lineas().length">Generar ticket</button>
+  <button pie class="btn primario" (click)="finalizar()" [disabled]="!lineas().length">Finalizar venta</button>
+</app-dialogo>

@@ -1,0 +1,9 @@
+<header class="cab">
+  <div class="textos">
+    <h2>{{ titulo() }}</h2>
+    @if (subtitulo()) { <p>{{ subtitulo() }}</p> }
+  </div>
+  <button type="button" class="cerrar" (click)="cerrar()" aria-label="Cerrar">×</button>
+</header>
+<div class="cuerpo"><ng-content /></div>
+<footer class="pie"><ng-content select="[pie]" /></footer>

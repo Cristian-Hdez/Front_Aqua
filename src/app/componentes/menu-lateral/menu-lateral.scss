@@ -1,0 +1,14 @@
+:host { display: grid; grid-template-columns: 253px 1fr; height: 100vh; }
+.menu { background: var(--sidebar); color: #fff; display: flex; flex-direction: column; padding: 24px 15px; overflow-y: auto; }
+h2 { text-align: center; margin: 0 0 14px; font-size: 24px; }
+/* Logo2 tiene texto azul oscuro: va sobre una placa blanca para que se lea en el menú oscuro */
+.logo { background: #fff; border-radius: 12px; padding: 10px 12px; margin-bottom: 12px; display: grid; place-items: center; }
+.logo img { width: 100%; height: auto; display: block; }
+.rol { text-align: center; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+nav { display: flex; flex-direction: column; gap: 12px; }
+a, .salir { display: flex; align-items: center; gap: 14px; padding: 12px 18px; color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; border: 0; background: none; cursor: pointer; text-align: left; }
+a.activo { background: var(--azul); }
+a:hover:not(.activo), .salir:hover { background: rgba(255, 255, 255, .08); }
+.ico { width: 26px; text-align: center; font-size: 20px; }
+.salir { margin-top: auto; }
+.contenido { overflow: auto; background: var(--fondo); padding: 20px 24px; }

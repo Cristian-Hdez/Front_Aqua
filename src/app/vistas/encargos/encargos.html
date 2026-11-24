@@ -1,0 +1,19 @@
+<app-encabezado-pagina titulo="Encargos" subtitulo="Control de garrafones apartados y pedidos por entregar" [(busqueda)]="q" (agregar)="editar()" />
+<section class="cards">
+  <div class="card verde"><h3>Encargos listos para entrega</h3><strong>{{ cuenta('Pagado') }}</strong></div>
+  <div class="card azul"><h3>Encargos entregados en el día</h3><strong>{{ entregadosHoy() }}</strong></div>
+  <div class="card naranja pend"><h3>Encargos pendientes</h3><strong>{{ cuenta('Pendiente') }}</strong></div>
+</section>
+<h2 class="titulo">Todos los encargos</h2>
+<table class="data-table">
+  <thead><tr><th>No</th><th>Nombre completo</th><th>Teléfono</th><th>Estado</th><th>Recepción</th><th>Entrega</th><th>Acción</th></tr></thead>
+  <tbody>
+    @for (e of filtrados(); track e.id) {
+      <tr>
+        <td>{{ e.id }}</td><td class="izq">{{ e.nombre }} {{ e.apellido }}</td><td>{{ e.telefono }}</td><td>{{ e.estado }}</td>
+        <td>{{ e.fechaRecepcion | date: 'yyyy-MM-dd' }}</td><td>{{ e.fechaEntrega | date: 'yyyy-MM-dd' }}</td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.encargos, e.id)" (editar)="editar(e)" /></td>
+      </tr>
+    } @empty { <tr><td colspan="7" class="vacio">No hay encargos.</td></tr> }
+  </tbody>
+</table>

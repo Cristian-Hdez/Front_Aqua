@@ -1,0 +1,21 @@
+:host { display: block; padding-bottom: 24px; }
+.tanque-zona { display: flex; align-items: center; justify-content: space-around; gap: 24px; height: 380px; margin-bottom: 16px; }
+h2 { font-size: 22px; }
+.caja { background: #fff; border: 1px solid #777; padding: 10px 12px; font-size: 14px; line-height: 1.8; }
+
+/* Tanque: el agua se recorta con la silueta (nivel-mascara.png) y el contorno va encima */
+.tanque { position: relative; height: 100%; aspect-ratio: 523 / 671; }
+.tanque img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.agua { position: absolute; inset: 0;
+  -webkit-mask: url('/img/nivel-mascara.png') center / 100% 100% no-repeat;
+          mask: url('/img/nivel-mascara.png') center / 100% 100% no-repeat;
+  background: linear-gradient(to top, #6ec3f5 var(--nivel), transparent var(--nivel)); }
+
+.graficas { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 32px 0; }
+.panel { background: #fff; border: 1px solid #d9dde4; padding: 16px 20px; }
+.mas-vendidos h3 { margin: 4px 0 14px; font-size: 20px; }
+.mas-vendidos ul { margin: 0; padding: 12px 16px; list-style: none; border: 1px solid #777; min-height: 150px; font-size: 15px; line-height: 1.9; }
+.mas-vendidos li::before { content: '•'; margin-right: 8px; }
+.mas-vendidos li.vacio::before { content: ''; margin: 0; }
+.flecha { margin: 0 4px; }
+@media (max-width: 1100px) { .graficas { grid-template-columns: 1fr; } }

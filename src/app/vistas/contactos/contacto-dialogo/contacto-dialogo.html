@@ -1,0 +1,9 @@
+<app-dialogo [titulo]="f.id ? 'Editar contacto' : 'Nuevo contacto'" subtitulo="Registra la información del contacto">
+  <div class="fila">Nombre: <input [(ngModel)]="f.nombre" /></div>
+  <div class="fila">Apellido: <input [(ngModel)]="f.apellido" /></div>
+  <div class="fila">Teléfono: <input [(ngModel)]="f.telefono" inputmode="tel" /></div>
+  <div class="fila">Referencia: <input [(ngModel)]="f.referencia" /></div>
+  <div class="fila">Notas: <input [(ngModel)]="f.notas" /></div>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="guardar()">💾 Guardar</button>
+</app-dialogo>

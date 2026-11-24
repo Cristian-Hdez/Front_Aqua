@@ -1,0 +1,10 @@
+<app-dialogo titulo="Registro de pipas" subtitulo="Registra la información de la pipa encargada">
+  <div class="fila">Pipa: <input [(ngModel)]="f.pipa" /></div>
+  <div class="fila">Capacidad: <input type="number" min="0" [(ngModel)]="f.capacidad" /></div>
+  <div class="fila">Fecha de entrega: <input type="date" [(ngModel)]="f.fechaEntrega" /></div>
+  <div class="fila">Hora: <input type="time" [(ngModel)]="f.hora" /></div>
+  <div class="fila">Costo: <input type="number" min="0" [(ngModel)]="f.costo" /></div>
+  <div class="fila">Recibió: <input [(ngModel)]="f.recibio" /></div>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="ref.close(f)">💾 Guardar</button>
+</app-dialogo>

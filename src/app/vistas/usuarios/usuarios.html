@@ -1,0 +1,13 @@
+<app-encabezado-pagina titulo="Usuarios" subtitulo="Administra permisos, solicitudes y contraseñas" [buscable]="false" />
+<table class="data-table">
+  <thead><tr><th>No</th><th>Nombre completo</th><th>Usuario</th><th>Rol</th><th>Estado</th><th>Reset solicitado</th><th>Acciones</th></tr></thead>
+  <tbody>
+    @for (u of store.usuarios(); track u.id) {
+      <tr>
+        <td>{{ u.id }}</td><td class="izq">{{ u.nombre }}</td><td class="izq">{{ u.usuario }}</td><td class="izq">{{ u.rol }}</td><td class="izq">{{ u.estado }}</td><td class="izq">{{ u.resetSolicitado ? 'Sí' : 'No' }}</td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.usuarios, u.id)" (editar)="alternarEstado(u.id)" /></td>
+      </tr>
+    }
+  </tbody>
+</table>
+<p><a routerLink="/backup">Ver respaldo de tablas (pantalla interna)</a></p>

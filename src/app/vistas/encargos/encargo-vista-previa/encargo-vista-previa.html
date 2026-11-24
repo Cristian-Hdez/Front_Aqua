@@ -1,0 +1,9 @@
+<app-dialogo titulo="Encargo" ancho="460px">
+  <p>Clave: {{ e.id.toString().padStart(5, '0') }}<br />Nombre: {{ e.nombre }} {{ e.apellido }}<br />Fecha: {{ e.fechaRecepcion | date: 'dd/MM/yyyy' }}<br />Teléfono: {{ e.telefono }}</p>
+  <table class="tabla-mini">
+    <thead><tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th></tr></thead>
+    <tbody><tr><td>{{ e.tipo }}</td><td>{{ e.cantidad }}</td><td>{{ total | currency }}</td></tr></tbody>
+  </table>
+  <p class="centrado"><strong>Total: {{ total | currency }}</strong></p>
+  <button pie class="btn primario" (click)="ref.close()">Aceptar</button>
+</app-dialogo>

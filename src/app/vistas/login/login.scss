@@ -1,0 +1,17 @@
+:host { display: grid; grid-template-columns: 1fr 1fr; height: 100vh; background: #fff; }
+.izq { display: flex; flex-direction: column; justify-content: center; padding: 0 12%; overflow-y: auto; }
+h1 { font-style: italic; font-size: 46px; text-align: center; margin: 0 0 24px; }
+.sub { text-align: center; color: var(--gris); margin-bottom: 48px; }
+.campo { display: flex; align-items: center; gap: 12px; background: #f3f4f8; border-radius: 16px; padding: 0 14px; height: 80px; margin-bottom: 20px; font-size: 26px; }
+.campo input { flex: 1; border: 0; background: none; font: inherit; font-size: 18px; outline: none; }
+.olvido { text-align: center; color: #0b4a9c; font-weight: 700; font-size: 15px; text-decoration: none; margin: 14px 0 40px; }
+.error { color: #e53935; text-align: center; margin: 0; }
+.botones { display: flex; align-items: center; justify-content: space-between; }
+.entrar { background: var(--azul); color: #fff; border: 0; border-radius: 20px; height: 80px; width: 232px; font: inherit; font-weight: 700; cursor: pointer; }
+.reg { background: none; border: 0; color: var(--azul); font: inherit; font-weight: 700; flex: 1; cursor: pointer; }
+.der { background: linear-gradient(#d6e9ff, #a7d1f7); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 40px 24px 32px; min-height: 0; }
+.logo { width: min(380px, 70%); height: auto; }
+.garrafon { display: flex; align-items: center; gap: 16px; min-height: 0; flex: 1; padding: 12px 0; }
+.garrafon img { height: min(100%, 300px); max-height: 38vh; width: auto; }
+.cap { writing-mode: vertical-rl; transform: rotate(180deg); color: #666; font-size: 20px; }
+.pie { color: #fff; text-align: center; font-size: 22px; margin: 0; } .pie strong { font-size: 32px; }

@@ -1,0 +1,9 @@
+<app-dialogo [titulo]="f.id ? 'Editar producto' : 'Nuevo producto'" subtitulo="Registra la información del producto">
+  <div class="fila">Nombre <input [(ngModel)]="f.nombre" /></div>
+  <div class="fila">Tipo <select [(ngModel)]="f.tipo">@for (t of tipos; track t) { <option [value]="t">{{ t }}</option> }</select></div>
+  <div class="fila">Precio <input type="number" min="0" [(ngModel)]="f.precio" /></div>
+  <div class="fila">Stock <input type="number" min="0" [(ngModel)]="f.stock" /></div>
+  <div class="fila">Stock mínimo <input type="number" min="0" [(ngModel)]="f.stockMinimo" /></div>
+  <button pie class="btn" (click)="ref.close()">Cancelar</button>
+  <button pie class="btn primario" (click)="guardar()">💾 Guardar</button>
+</app-dialogo>

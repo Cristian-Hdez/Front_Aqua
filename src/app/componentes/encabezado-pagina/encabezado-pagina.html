@@ -1,0 +1,12 @@
+<header class="page-header">
+  <div><h1>{{ titulo() }}</h1><p>{{ subtitulo() }}</p></div>
+  @if (buscable()) {
+    <div class="tools">
+      <div class="search">
+        <input [value]="busqueda()" (input)="busqueda.set($any($event.target).value)" aria-label="Buscar" />
+        <span>🔍</span>
+      </div>
+      <button class="fab" (click)="agregar.emit()" aria-label="Agregar">+</button>
+    </div>
+  }
+</header>

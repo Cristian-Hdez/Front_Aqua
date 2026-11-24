@@ -1,0 +1,12 @@
+<app-encabezado-pagina titulo="Contactos" subtitulo="Administra los contactos registrados del sistema" [(busqueda)]="q" (agregar)="editar()" />
+<table class="data-table">
+  <thead><tr><th>No</th><th>Nombre completo</th><th>Teléfono</th><th>Referencia</th><th>Notas</th><th>Acciones</th></tr></thead>
+  <tbody>
+    @for (c of filtrados(); track c.id) {
+      <tr>
+        <td>{{ c.id }}</td><td class="izq">{{ c.nombre }} {{ c.apellido }}</td><td>{{ c.telefono }}</td><td>{{ c.referencia }}</td><td class="izq">{{ c.notas }}</td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.contactos, c.id)" (editar)="editar(c)" /></td>
+      </tr>
+    } @empty { <tr><td colspan="6" class="vacio">No hay contactos que coincidan.</td></tr> }
+  </tbody>
+</table>

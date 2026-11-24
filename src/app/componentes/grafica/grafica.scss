@@ -1,0 +1,11 @@
+.grafica { text-align: center; }
+h3 { margin: 0 0 6px; font-size: 22px; }
+svg { width: 100%; height: auto; display: block; }
+.marco { fill: #fff; stroke: #555; stroke-width: 1; }
+.eje { font-size: 11px; fill: #333; }
+.linea { fill: none; stroke: #2196f3; stroke-width: 1.8; }
+.punto { fill: #2196f3; }
+.barra { fill: #2fd65a; }
+.leyenda-x { font-weight: 700; font-size: 14px; margin-top: 2px; }
+.leyenda { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; padding: 3px 10px; border: 1px solid #555; font-size: 13px; background: #fff; }
+i { display: inline-block; &.l { width: 18px; height: 2px; background: #2196f3; } &.b { width: 11px; height: 11px; background: #2fd65a; } }

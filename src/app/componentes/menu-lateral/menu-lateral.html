@@ -1,0 +1,12 @@
+<aside class="menu">
+  <h2>AquaControl</h2>
+  <div class="logo"><img src="img/logo2.png" alt="Natural, agua de calidad" /></div>
+  <div class="rol">🛡️ {{ auth.usuario()?.nombre }}</div>
+  <nav>
+    @for (n of nav; track n.ruta) {
+      <a [routerLink]="n.ruta" routerLinkActive="activo"><span class="ico">{{ n.icono }}</span>{{ n.texto }}</a>
+    }
+  </nav>
+  <button class="salir" (click)="auth.logout()"><span class="ico">🚪</span>Cerrar sesión</button>
+</aside>
+<main class="contenido"><router-outlet /></main>

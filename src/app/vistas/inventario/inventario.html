@@ -1,0 +1,29 @@
+<app-encabezado-pagina titulo="Inventario" subtitulo="Gestión de productos y stock" [(busqueda)]="q" (agregar)="editarProducto()" />
+<table class="data-table">
+  <thead><tr><th>No</th><th>Nombre</th><th>Tipo</th><th>Precio</th><th>Stock</th><th>Disponibilidad</th><th>Activo</th><th>Acciones</th></tr></thead>
+  <tbody>
+    @for (p of filtrados(); track p.id) {
+      <tr>
+        <td>{{ p.id }}</td><td class="izq">{{ p.nombre }}</td><td class="izq">{{ p.tipo }}</td>
+        <td>{{ p.precio | currency: 'USD' : '$' : '1.1-1' }}</td><td>{{ p.stock }}</td><td>{{ p.disponibilidad }}</td>
+        <td><input type="checkbox" [checked]="p.activo" (change)="toggle(p)" aria-label="Activo" /></td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.productos, p.id)" (editar)="editarProducto(p)" /></td>
+      </tr>
+    } @empty { <tr><td colspan="8" class="vacio">No hay productos. Agrega uno con el botón +.</td></tr> }
+  </tbody>
+</table>
+
+<div class="separador"></div>
+<app-encabezado-pagina titulo="Registro de pipas" subtitulo="Contenido detallado de pipas ingresadas" [(busqueda)]="qPipas" (agregar)="editarPipa()" />
+<table class="data-table">
+  <thead><tr><th>No</th><th>Pipa</th><th>Capacidad</th><th>¿Quién recibió?</th><th>Fecha</th><th>Total</th><th>Acción</th></tr></thead>
+  <tbody>
+    @for (p of pipasFiltradas(); track p.id) {
+      <tr>
+        <td>{{ p.id }}</td><td>{{ p.pipa }}</td><td>{{ p.capacidad }} L</td><td>{{ p.recibio }}</td>
+        <td>{{ p.fechaEntrega | date: 'dd/MM/yyyy' }} {{ p.hora }}</td><td>{{ p.costo | currency: 'USD' : '$' : '1.2-2' }}</td>
+        <td class="acciones"><app-acciones-fila (eliminar)="store.eliminar(store.pipas, p.id)" (editar)="editarPipa(p)" /></td>
+      </tr>
+    } @empty { <tr><td colspan="7" class="vacio">Aún no hay pipas registradas.</td></tr> }
+  </tbody>
+</table>
